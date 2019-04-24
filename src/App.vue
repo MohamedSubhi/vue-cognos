@@ -16,18 +16,18 @@
     </v-toolbar>
 
     <v-content>
-      <HelloWorld/>
+      <Tree/>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+import Tree from './components/Tree'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Tree
   },
   data () {
     return {
