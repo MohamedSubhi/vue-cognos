@@ -52,6 +52,30 @@
         this.items = json.map(folder => {
           return {name: folder.name, children:[], parent: folder.parent}
         })
+      },
+      async fetchSubFolder(item){
+        let searchPath = item.parent+"/folder[@name='"+item.name+"']/*"
+
+        const folders = await fetch('http://localhost:56665/api/Login/getSubFoldersList', 
+        {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({searchPath: searchPath})
+        })
+        const json = await folders.json()
+        item.children.push(...json.map(file => {
+          if(file.usage === 'folder'){
+            return {name: file.name, children:[], parent: file.parent}
+          }
+          else{
+            if(file.format === 'PDF')
+              return {name: file.name, file:'pdf'}
+            else
+              return {name: file.name, file:'xls'}
+          }
+        }))
       }
     }
   }
