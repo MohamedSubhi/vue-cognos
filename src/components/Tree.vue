@@ -69,8 +69,8 @@ export default {
           if (child.usage === "folder") {
             return { name: child.name, children: [], parent: child.parent };
           } else {
-            if (child.format === "PDF") return { name: child.name, child: "pdf" };
-            else return { name: child.name, child: "xls" };
+            if (child.format === "PDF") return { name: child.name, file: "pdf" };
+            else return { name: child.name, file: "xls" };
           }
         })
       );
