@@ -7,7 +7,7 @@
           <v-treeview
             :items="items"
             :active.sync="active"
-            :load-children="fetchSubFolder"
+            :load-children="getTreeFolders"
             :open.sync="open"
             activatable
             return-object
@@ -33,7 +33,7 @@
             <v-card v-else :key="selected.name" class="pt-4 mx-auto" flat max-width="400">
               <v-card-text>
                 <h3 class="headline mb-2">{{ selected.name }}</h3>
-                <div class="blue--text mb-2">{{ selected.parent }}</div>
+                <div class="blue--text mb-2">{{ selected.searchPath }}</div>
                 <div class="blue--text subheading font-weight-bold">{{ selected.name }}</div>
               </v-card-text>
               <v-divider></v-divider>
@@ -58,20 +58,24 @@ export default {
       xls: "mdi-file-excel"
     },
     tree: [],
-    items: []
+    items: [],
+    selected: null
   }),
-
-  computed: {
-    selected () {
-      if (!this.active.length) return undefined
-
-      // eslint-disable-next-line
-      console.log(this.active[0].searchPath)
-
-      return {name: "test", parent: "test"}       
+  watch:{
+    active(){
+      if(this.active.length)
+      fetch(
+        "http://localhost:56665/api/Login/getFolderList",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ searchPath: this.active[0].searchPath  + "//report"})
+        }
+      ).then(res => res.json()).then(json => {this.selected = json[0]})
     }
   },
-
   mounted() {
     this.getFolders();
   },
@@ -93,7 +97,7 @@ export default {
         return { name: folder.name, children: [], parent: folder.parent };
       });
     },
-    async fetchSubFolder(item) {
+    async getTreeFolders(item) {
       let searchPath = item.parent + "/folder[@name='" + item.name + "']";
 
       const folders = await fetch(
