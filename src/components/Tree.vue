@@ -10,6 +10,7 @@
             :load-children="fetchSubFolder"
             :open.sync="open"
             activatable
+            return-object
             active-class="primary--text"
             class="grey lighten-5"
             item-key="name"
@@ -36,16 +37,6 @@
                 <div class="blue--text subheading font-weight-bold">{{ selected.name }}</div>
               </v-card-text>
               <v-divider></v-divider>
-              <!-- <v-layout tag="v-card-text" text-xs-left wrap>
-                <v-flex tag="strong" xs5 text-xs-right mr-3 mb-2>Company:</v-flex>
-                <v-flex>{{ selected.company.name }}</v-flex>
-                <v-flex tag="strong" xs5 text-xs-right mr-3 mb-2>Website:</v-flex>
-                <v-flex>
-                  <a :href="`//${selected.website}`" target="_blank">{{ selected.website }}</a>
-                </v-flex>
-                <v-flex tag="strong" xs5 text-xs-right mr-3 mb-2>Phone:</v-flex>
-                <v-flex>{{ selected.phone }}</v-flex>
-              </v-layout> -->
             </v-card>
           </v-scroll-y-transition>
         </v-flex>
@@ -56,6 +47,7 @@
 
 <script>
 export default {
+
   data: () => ({
     open: [],
     active: [],
@@ -68,23 +60,26 @@ export default {
     tree: [],
     items: []
   }),
-  computed: {
-      selected () {
-        if (!this.active.length) return undefined
 
-        const id = this.active[0]
-        console.log(this.active)
-        // return this.items.find(report => {return report.name === id})
-        return { name: "test", parent: "pdf" }
-      }
-    },
+  computed: {
+    selected () {
+      if (!this.active.length) return undefined
+
+      // eslint-disable-next-line
+      console.log(this.active[0].searchPath)
+
+      return {name: "test", parent: "test"}       
+    }
+  },
+
   mounted() {
     this.getFolders();
   },
+
   methods: {
     async getFolders() {
       const folders = await fetch(
-        "http://localhost:56665/api/Login/getSubFoldersList",
+        "http://localhost:56665/api/Login/getFolderList",
         {
           method: "POST",
           headers: {
@@ -102,7 +97,7 @@ export default {
       let searchPath = item.parent + "/folder[@name='" + item.name + "']";
 
       const folders = await fetch(
-        "http://localhost:56665/api/Login/getSubFoldersList",
+        "http://localhost:56665/api/Login/getFolderList",
         {
           method: "POST",
           headers: {
@@ -118,13 +113,14 @@ export default {
             return { name: child.name, children: [], parent: child.parent };
           } else {
             if (child.format === "PDF")
-              return { name: child.name, file: "pdf", searchPath: searchPath };
-            else return { name: child.name, file: "xls" , searchPath: searchPath };
+              return { name: child.name, file: "pdf", searchPath: child.searchPath };
+            else return { name: child.name, file: "xls" , searchPath: child.searchPath };
           }
         })
       );
     }
   }
+
 };
 </script>
 

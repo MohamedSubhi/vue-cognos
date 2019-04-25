@@ -1,6 +1,6 @@
 Todo:
   ☐ Login page @high 
-  ☐ SSO @high 
+  ☐ SSO
   ✔ File Structure @started(19-04-24 08:17) @done(19-04-24 11:03) @lasted(2h46m46s)
   ☐ Show Report details
   ☐ Send Report
@@ -8,4 +8,5 @@ Todo:
   ☐ Show Report Parameters
 
 Fixme:
-  ☐ Excel icon @critical @started(19-04-24 14:04)
+  ✔ Excel icon @critical @started(19-04-24 14:04) @done(19-04-25 07:47) @lasted(17h43m24s)
+  ✔ Error when Report has no Default options @critical @done(19-04-25 09:00)
