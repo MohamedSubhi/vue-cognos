@@ -116,9 +116,12 @@ export default {
           if (child.usage === "folder") {
             return { name: child.name, children: [], parent: child.parent };
           } else {
-            if (child.format === "PDF")
+            if(child.format === "PDF")
               return { name: child.name, file: "pdf", searchPath: child.searchPath };
-            else return { name: child.name, file: "xls" , searchPath: child.searchPath };
+            else if(child.format === "html")
+              return { name: child.name, file: "html" , searchPath: child.searchPath };
+            else
+              return { name: child.name, file: "xls" , searchPath: child.searchPath };
           }
         })
       );
