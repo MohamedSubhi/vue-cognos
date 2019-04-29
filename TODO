@@ -2,10 +2,11 @@ Todo:
   ☐ Login page @high 
   ☐ SSO
   ✔ File Structure @started(19-04-24 08:17) @done(19-04-24 11:03) @lasted(2h46m46s)
-  ☐ Show Report details
+  ☐ Show Report details @started(19-04-29 08:34)
   ☐ Send Report
-  ☐ Download Report
-  ☐ Show Report Parameters
+  ☐ Download Report @low 
+  ☐ Show Report Parameters @critical 
+  ☐ Multi select @high 
 
 Fixme:
   ✔ Excel icon @critical @started(19-04-24 14:04) @done(19-04-25 07:47) @lasted(17h43m24s)

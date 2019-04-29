@@ -30,11 +30,12 @@
               class="title grey--text text--lighten-1 font-weight-light"
               style="align-self: center;"
             >Select a Report</div>
-            <v-card v-else :key="selected.name" class="pt-4 mx-auto" flat max-width="400">
+            <v-card v-else :key="selected.name" class="pt-4 mx-auto" flat max-width="800">
               <v-card-text>
-                <h3 class="headline mb-2">{{ selected.name }}</h3>
-                <div class="blue--text mb-2">{{ selected.searchPath }}</div>
-                <div class="blue--text subheading font-weight-bold">{{ selected.name }}</div>
+                <h3 class="headline mb-2 blue--text">{{ selected.name }}</h3>
+                <div class="body-1 font-weight-bold text-md-left">search path: <span class="caption">{{ selected.searchPath }}</span></div>
+                <div class="body-1 font-weight-bold text-md-left">creation time: <span class="caption">{{ selected.creationTime }}</span></div>
+                <div class="body-1 font-weight-bold text-md-left">modification time: <span class="caption">{{ selected.modificationTime }}</span></div>
               </v-card-text>
               <v-divider></v-divider>
             </v-card>
@@ -73,7 +74,7 @@ export default {
           },
           body: JSON.stringify({ searchPath: this.active[0].searchPath  + "//report"})
         }
-      ).then(res => res.json()).then(json => {this.selected = json[0]})
+      ).then(res => res.json()).then(json => this.selected = json[0])
     }
   },
   mounted() {
