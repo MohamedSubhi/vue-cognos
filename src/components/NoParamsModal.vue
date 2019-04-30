@@ -35,7 +35,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="blue darken-1" flat @click="dialog = false">Close</v-btn>
-          <v-btn color="blue darken-1" flat @click="dialog = false">Send</v-btn>
+          <v-btn color="blue darken-1" flat @click="send()">Send</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -47,6 +47,18 @@
     data: () => ({
         radioGroup: "pdf",
         dialog: false
-    })
+    }),
+    methods: {
+        send() {
+            const params = JSON.stringify({reportname: "Test", betreff: "test", email: "mohamed.bouchi@chefsculinar.de", doc_type: "PDF"});
+            fetch('http://localhost:56665/api/RunAndEmail/sendReportNoPrams', {
+                method: 'POST',
+                headers: {
+                "Content-Type": "application/json"
+                },
+                body: params
+            }).then(()=>{this.dialog = false;});
+        }
+    }
   }
 </script>
