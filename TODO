@@ -2,11 +2,13 @@ Todo:
   ☐ Login page @high 
   ☐ SSO
   ✔ File Structure @started(19-04-24 08:17) @done(19-04-24 11:03) @lasted(2h46m46s)
-  ☐ Show Report details @started(19-04-29 08:34)
-  ☐ Send Report
+  ✔ Show Report details @started(19-04-29 08:34) @done(19-04-29 13:50) @lasted(5h16m59s)
+  ☐ Send Report (without params) @started(19-04-30 08:01)
   ☐ Download Report @low 
   ☐ Show Report Parameters @critical 
   ☐ Multi select @high 
+  ☐ Show dialog when send Email to choose where to send the report @high 
+  ☐ Seperate Components @started(19-04-30 08:22)
 
 Fixme:
   ✔ Excel icon @critical @started(19-04-24 14:04) @done(19-04-25 07:47) @lasted(17h43m24s)
