@@ -12,20 +12,20 @@
           <v-container grid-list-md>
             <v-layout wrap>
                 <v-flex xs12>
-                    <v-text-field label="Report Name"></v-text-field>
+                    <v-text-field label="Title" v-model="title"></v-text-field>
                 </v-flex>
                 <v-flex xs12>
-                    <v-text-field label="Email*" required></v-text-field>
+                    <v-text-field label="Email*" required v-model="email"></v-text-field>
                 </v-flex>
                 <v-radio-group v-model="radioGroup" row>
                     <div class="body-1 font-weight-bold text-md-left">Output: </div>
                     <v-radio
                     label="PDF"
-                    value="pdf"
+                    value="PDF"
                     ></v-radio>
                     <v-radio
                     label="Excel"
-                    value="excel"
+                    value="spreadsheetML"
                     ></v-radio>
                 </v-radio-group>
             </v-layout>
@@ -44,13 +44,23 @@
 
 <script>
   export default {
+    props: {
+        searchPath: ""
+    },
     data: () => ({
-        radioGroup: "pdf",
-        dialog: false
+        radioGroup: "PDF",
+        dialog: false,
+        title: "",
+        email: ""
     }),
     methods: {
         send() {
-            const params = JSON.stringify({reportname: "Test", betreff: "test", email: "mohamed.bouchi@chefsculinar.de", doc_type: "PDF"});
+            const params = JSON.stringify({
+                searchPath: this.searchPath,
+                betreff: this.title,
+                email: this.email,
+                doc_type: this.radioGroup});
+
             fetch('http://localhost:56665/api/RunAndEmail/sendReportNoPrams', {
                 method: 'POST',
                 headers: {

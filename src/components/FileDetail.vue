@@ -14,7 +14,7 @@
                 <div class="body-1 font-weight-bold text-md-left">Modification time: <span class="caption">{{ selected.modificationTime }}</span></div>
             </v-card-text>
             <v-divider></v-divider>
-            <NoParamsModal />
+            <NoParamsModal :searchPath="selected.searchPath"/>
         </v-card>
         </v-scroll-y-transition>
     </v-flex>
