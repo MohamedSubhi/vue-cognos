@@ -8,7 +8,8 @@ Todo:
   ☐ Show Report Parameters @critical 
   ☐ Multi select @high 
   ☐ Show dialog when send Email to choose where to send the report @high 
-  ☐ Seperate Components @started(19-04-30 08:22)
+  ✔ Create seperate component for file detail @started(19-04-30 08:22) @done(19-04-30 08:42) @lasted(20m45s)
+  ☐ Create seperate component for the file structure 
 
 Fixme:
   ✔ Excel icon @critical @started(19-04-24 14:04) @done(19-04-25 07:47) @lasted(17h43m24s)
