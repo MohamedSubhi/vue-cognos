@@ -52,16 +52,16 @@ export default {
   watch:{
     active(){
       if(this.active.length)
-      fetch(
-        "http://localhost:56665/api/Login/getFolderList",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({ searchPath: this.active[0].searchPath  + "//report"})
-        }
-      ).then(res => res.json()).then(json => this.selected = json[0])
+        fetch(
+          "http://localhost:56665/api/Login/getFolderList",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ searchPath: this.active[0].searchPath  + "//report"})
+          }
+        ).then(res => res.json()).then(json => this.selected = json[0])
     }
   },
   mounted() {

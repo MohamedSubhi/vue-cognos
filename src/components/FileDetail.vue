@@ -12,6 +12,8 @@
                 <div class="body-1 font-weight-bold text-md-left">Search path: <span class="caption">{{ selected.searchPath }}</span></div>
                 <div class="body-1 font-weight-bold text-md-left">Creation time: <span class="caption">{{ selected.creationTime }}</span></div>
                 <div class="body-1 font-weight-bold text-md-left">Modification time: <span class="caption">{{ selected.modificationTime }}</span></div>
+                <div class="body-1 font-weight-bold text-md-left">Description: <span class="caption">{{ selected.description }}</span></div>
+                <div class="body-1 font-weight-bold text-md-left">Contact Email: <span class="caption">{{ selected.contactEmail }}</span></div>
             </v-card-text>
             <v-divider></v-divider>
             <NoParamsModal :searchPath="selected.searchPath"/>
