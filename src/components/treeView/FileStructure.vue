@@ -1,28 +1,26 @@
 <template>
-        <v-flex xs5>
-          <v-treeview
-            :items="items"
-            :active.sync="active"
-            :load-children="getTreeFolders"
-            :open.sync="open"
-            activatable
-            return-object
-            active-class="primary--text"
-            class="grey lighten-5 file__structure"
-            item-key="name"
-            open-on-click
-            transition
-          >
-            <template v-slot:prepend="{ item, open }">
-              <v-icon v-if="!item.file">{{ open ? 'mdi-folder-open' : 'mdi-folder' }}</v-icon>
-              <v-icon v-else>{{ files[item.file] }}</v-icon>
-            </template>
-          </v-treeview>
-        </v-flex>
+  <v-treeview
+    :items="items"
+    :active.sync="active"
+    :load-children="getTreeFolders"
+    :open.sync="open"
+    activatable
+    return-object
+    active-class="primary--text"
+    class="grey lighten-5 file__structure"
+    item-key="name"
+    open-on-click
+    transition
+  >
+    <template v-slot:prepend="{ item, open }">
+      <v-icon v-if="!item.file">{{ open ? 'mdi-folder-open' : 'mdi-folder' }}</v-icon>
+      <v-icon v-else>{{ files[item.file] }}</v-icon>
+    </template>
+  </v-treeview>
 </template>
 
 <script>
-import FileDetail from './FileDetail'
+
 export default {
 
   data: () => ({
@@ -50,7 +48,7 @@ export default {
             },
             body: JSON.stringify({ searchPath: this.active[0].searchPath  + "//report"})
           }
-        ).then(res => res.json()).then(json => this.selected = json[0])
+        ).then(res => res.json()).then(json => {this.$emit('childToParent', json[0]); return this.selected = json[0]})
     }
   },
   mounted() {

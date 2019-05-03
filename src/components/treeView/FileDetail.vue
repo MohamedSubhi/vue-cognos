@@ -1,6 +1,5 @@
 <template>
-    <v-flex d-flex text-xs-center>
-        <v-scroll-y-transition mode="out-in">
+    <v-scroll-y-transition mode="out-in">
         <div
             v-if="!selected"
             class="title grey--text text--lighten-1 font-weight-light"
@@ -18,8 +17,7 @@
             <v-divider></v-divider>
             <NoParamsModal :searchPath="selected.searchPath"/>
         </v-card>
-        </v-scroll-y-transition>
-    </v-flex>
+    </v-scroll-y-transition>
 </template>
 
 <script>
