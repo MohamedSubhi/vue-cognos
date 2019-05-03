@@ -12,7 +12,7 @@
             activatable
             return-object
             active-class="primary--text"
-            class="grey lighten-5"
+            class="grey lighten-5 file__structure"
             item-key="name"
             open-on-click
             transition
@@ -45,7 +45,6 @@ export default {
       txt: "mdi-file-document-outline",
       xls: "mdi-file-excel"
     },
-    tree: [],
     items: [],
     selected: null
   }),
@@ -120,4 +119,8 @@ export default {
 </script>
 
 <style>
+.file__structure{
+  height: -webkit-fill-available;
+  overflow: scroll;
+}
 </style>

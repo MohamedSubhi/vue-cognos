@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import Tree from './components/Tree'
+import Tree from './components/treeView/Tree'
 
 export default {
   name: 'App',

@@ -45,7 +45,7 @@
 <script>
   export default {
     props: {
-        searchPath: ""
+        searchPath: null
     },
     data: () => ({
         radioGroup: "PDF",

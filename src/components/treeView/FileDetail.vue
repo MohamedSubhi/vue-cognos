@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import NoParamsModal from './NoParamsModal';
+import NoParamsModal from '../modals/NoParamsModal';
 
 export default {
     components: {
