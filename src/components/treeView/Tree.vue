@@ -15,12 +15,11 @@
 </template>
 
 <script>
-import FileDetail from './FileDetail'
-import FileStructure from './FileStructure'
+import FileDetail from "./FileDetail";
+import FileStructure from "./FileStructure";
 
 export default {
-
-  components:{
+  components: {
     FileDetail,
     FileStructure
   },
@@ -28,17 +27,16 @@ export default {
     selected: null
   }),
   methods: {
-    onChildClick (value) {
-      console.log(value)
-      this.selected = value
+    onChildClick(value) {
+      console.log(value);
+      this.selected = value;
     }
   }
-
 };
 </script>
 
 <style>
-.file__structure{
+.file__structure {
   height: -webkit-fill-available;
   overflow: scroll;
 }

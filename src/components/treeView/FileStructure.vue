@@ -20,9 +20,7 @@
 </template>
 
 <script>
-
 export default {
-
   data: () => ({
     open: [],
     active: [],
@@ -36,19 +34,23 @@ export default {
     items: [],
     selected: null
   }),
-  watch:{
-    active(){
-      if(this.active.length)
-        fetch(
-          "http://localhost:56665/api/Login/getFolderList",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ searchPath: this.active[0].searchPath  + "//report"})
-          }
-        ).then(res => res.json()).then(json => {this.$emit('childToParent', json[0]); return this.selected = json[0]})
+  watch: {
+    active() {
+      if (this.active.length)
+        fetch("http://localhost:56665/api/Login/getFolderList", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            searchPath: this.active[0].searchPath + "//report"
+          })
+        })
+          .then(res => res.json())
+          .then(json => {
+            this.$emit("childToParent", json[0]);
+            return (this.selected = json[0]);
+          });
     }
   },
   mounted() {
@@ -82,7 +84,7 @@ export default {
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify({ searchPath: searchPath  + "/*"})
+          body: JSON.stringify({ searchPath: searchPath + "/*" })
         }
       );
       const json = await folders.json();
@@ -91,23 +93,34 @@ export default {
           if (child.usage === "folder") {
             return { name: child.name, children: [], parent: child.parent };
           } else {
-            if(child.format === "PDF")
-              return { name: child.name, file: "pdf", searchPath: child.searchPath };
-            else if(child.format === "html")
-              return { name: child.name, file: "html" , searchPath: child.searchPath };
+            if (child.format === "PDF")
+              return {
+                name: child.name,
+                file: "pdf",
+                searchPath: child.searchPath
+              };
+            else if (child.format === "html")
+              return {
+                name: child.name,
+                file: "html",
+                searchPath: child.searchPath
+              };
             else
-              return { name: child.name, file: "xls" , searchPath: child.searchPath };
+              return {
+                name: child.name,
+                file: "xls",
+                searchPath: child.searchPath
+              };
           }
         })
       );
     }
   }
-
 };
 </script>
 
 <style>
-.file__structure{
+.file__structure {
   height: -webkit-fill-available;
   overflow: scroll;
 }
