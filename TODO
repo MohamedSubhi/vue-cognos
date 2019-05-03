@@ -3,8 +3,10 @@ Todo:
   ☐ SSO
   ☐ Download Report @low 
   ☐ Show Report Parameters @critical 
-  ☐ Multi select @high 
-  ☐ Delete, move reports
+  ☐ Multi select @high
+  ☐ Move report 
+  ✔ Confirmation dialog when delete @done(19-05-03 09:50)
+  ✔ Delete report @done(19-05-03 09:24)
   ✔ Show dialog when send Email to choose where to send the report @high @done(19-05-02 08:27)
   ✔ Create seperate component for file detail @started(19-04-30 08:22) @done(19-04-30 08:42) @lasted(20m45s)
   ✔ Create seperate component for the file structure @done(19-05-02 08:27)

@@ -28,7 +28,6 @@ export default {
   }),
   methods: {
     onChildClick(value) {
-      console.log(value);
       this.selected = value;
     }
   }
