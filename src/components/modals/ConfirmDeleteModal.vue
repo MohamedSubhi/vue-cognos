@@ -25,7 +25,7 @@
           </v-btn>
 
           <v-btn
-            color="green darken-1"
+            color="red darken-1"
             flat="flat"
             @click="deleteReport()"
           >
@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import eventBus from '../../eventBus'
   export default {
     props: {
         searchPath: null
@@ -49,16 +50,20 @@
     },
     methods: {
         deleteReport(){
-            fetch("http://localhost:56665/api/Login/deleteReport", {
-                method: "POST",
-                headers: {
-                "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
+          fetch("http://localhost:56665/api/Login/deleteReport", {
+              method: "DELETE",
+              headers: {
+              "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
                 searchPath: this.searchPath
-                })
-            });
-            this.dialog = false
+              })
+          }).then(res => {
+              if (res.status === 200) {
+                this.dialog = false
+                eventBus.$emit('showSnackbar')
+              }
+          });
         }
     }
   }

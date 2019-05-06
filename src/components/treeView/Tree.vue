@@ -11,17 +11,20 @@
         </v-flex>
       </v-layout>
     </v-card>
+    <SnackBar />
   </v-container>
 </template>
 
 <script>
 import FileDetail from "./FileDetail";
 import FileStructure from "./FileStructure";
+import SnackBar from "../modals/SnackBar";
 
 export default {
   components: {
     FileDetail,
-    FileStructure
+    FileStructure,
+    SnackBar
   },
   data: () => ({
     selected: null
