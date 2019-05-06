@@ -22,15 +22,16 @@ import eventBus from '../../eventBus';
     data () {
       return {
         snackbar: false,
-        color: 'success',
+        color: '',
         mode: '',
         timeout: 2000,
         text: 'The Report has been deleted'
       }
     },
     created() {
-        eventBus.$on('showSnackbar', () => {
+        eventBus.$on('showSnackbar', data => {
             this.snackbar = true
+            this.color = data
         })
     }
   }

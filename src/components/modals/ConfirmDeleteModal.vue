@@ -61,9 +61,9 @@ import eventBus from '../../eventBus'
           }).then(res => {
               if (res.status === 200) {
                 this.dialog = false
-                eventBus.$emit('showSnackbar')
+                eventBus.$emit('showSnackbar', 'success')
               } else {
-                alert('error')
+                eventBus.$emit('showSnackbar', 'error')
               }
           });
         }
