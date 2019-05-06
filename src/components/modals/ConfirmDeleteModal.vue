@@ -62,6 +62,8 @@ import eventBus from '../../eventBus'
               if (res.status === 200) {
                 this.dialog = false
                 eventBus.$emit('showSnackbar')
+              } else {
+                alert('error')
               }
           });
         }
