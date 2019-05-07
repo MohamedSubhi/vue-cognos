@@ -2,7 +2,7 @@
   <v-layout row justify-center>
     <v-dialog v-model="dialog" persistent max-width="600px">
       <template v-slot:activator="{ on }">
-        <v-btn color="success" v-on="on" dark>Send per Email</v-btn>
+        <v-btn color="success" v-on="on" dark>Send per Email<v-icon right>email</v-icon></v-btn>
       </template>
       <v-form ref="form">
         <v-card>
@@ -16,7 +16,7 @@
                       <v-text-field label="Title" v-model="title"></v-text-field>
                   </v-flex>
                   <v-flex xs12>
-                      <v-text-field label="Email*" v-model="email" :rules="[inputRules.required, inputRules.email]"></v-text-field>
+                      <v-text-field label="Email*" prepend-inner-icon="email" v-model="email" :rules="[inputRules.required, inputRules.email]"></v-text-field>
                   </v-flex>
                   <v-radio-group v-model="radioGroup" row>
                       <div class="body-1 font-weight-bold text-md-left">Output: </div>
@@ -35,8 +35,8 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="blue darken-1" flat @click="dialog = false">Close</v-btn>
-            <v-btn color="blue darken-1" flat @click="send()">Send</v-btn>
+            <v-btn color="orange" class="white--text" @click="dialog = false">Close<v-icon right>close</v-icon></v-btn>
+            <v-btn color="green"  class="white--text" @click="send()">Send<v-icon right>send</v-icon></v-btn>
           </v-card-actions>
         </v-card>
       </v-form>
