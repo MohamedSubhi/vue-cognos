@@ -5,6 +5,7 @@ Todo:
   ☐ Show Report Parameters @critical 
   ☐ Multi select @high
   ☐ Move report 
+  ☐ Show snackBar when send email
   ✔ Confirmation dialog when delete @done(19-05-03 09:50)
   ✔ Delete report @done(19-05-03 09:24)
   ✔ Show dialog when send Email to choose where to send the report @high @done(19-05-02 08:27)

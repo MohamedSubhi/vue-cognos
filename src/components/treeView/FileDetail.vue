@@ -10,6 +10,7 @@
         <div class="card__header">
           <h3 class="headline mb-2 blue--text card__header-text">{{ selected.name }}</h3>
           <v-btn flat icon class="card__header-btn"><v-icon color="green">file_copy</v-icon></v-btn>
+          <v-btn flat icon class="card__header-btn"><v-icon color="green">fas fa-cut</v-icon></v-btn>
           <ConfirmDeleteModal :searchPath="selected.searchPath" class="card__header-btn"/>
         </div>
         <div class="body-1 font-weight-bold text-md-left">
