@@ -9,7 +9,8 @@
       <v-card-text>
         <div class="card__header">
           <h3 class="headline mb-2 blue--text card__header-text">{{ selected.name }}</h3>
-          <v-btn flat icon class="card__header-btn"><v-icon color="green">file_copy</v-icon></v-btn>
+          <!-- <v-btn flat icon class="card__header-btn"><v-icon color="green">file_copy</v-icon></v-btn> -->
+          <FileStructureModal :searchPath="selected.searchPath" class="card__header-btn"/>
           <v-btn flat icon class="card__header-btn"><v-icon color="orange">fas fa-cut</v-icon></v-btn>
           <ConfirmDeleteModal :searchPath="selected.searchPath" class="card__header-btn"/>
         </div>
@@ -43,11 +44,13 @@
 <script>
 import NoParamsModal from "../modals/NoParamsModal";
 import ConfirmDeleteModal from "../modals/ConfirmDeleteModal";
+import FileStructureModal from "../modals/FileStructureModal";
 
 export default {
   components: {
     NoParamsModal,
-    ConfirmDeleteModal
+    ConfirmDeleteModal,
+    FileStructureModal
   },
   props: {
     selected: null

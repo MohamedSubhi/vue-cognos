@@ -7,7 +7,7 @@
       max-width="290"
     >
       <v-card>
-        <v-card-title class="headline">Delete Seleted?</v-card-title>
+        <v-card-title class="headline"><v-icon class="orange--text" left>warning</v-icon>Delete Seleted?</v-card-title>
 
         <v-card-text>
           Are you sure you want to delete the selected report?
