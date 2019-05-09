@@ -4,7 +4,7 @@
         :color="color"
         :multi-line="mode === 'multi-line'"
         :timeout="timeout"
-        :vertical="mode === 'vertical'"
+        top
         >
         {{ text }}
         <v-btn
@@ -23,15 +23,15 @@ import eventBus from '../../eventBus';
       return {
         snackbar: false,
         color: '',
-        mode: '',
-        timeout: 2000,
-        text: 'The Report has been deleted'
+        timeout: 3000,
+        text: ''
       }
     },
     created() {
         eventBus.$on('showSnackbar', data => {
             this.snackbar = true
-            this.color = data
+            this.color = data.type
+            this.text = data.text
         })
     }
   }

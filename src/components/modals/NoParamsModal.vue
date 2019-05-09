@@ -45,6 +45,7 @@
 </template>
 
 <script>
+import eventBus from '../../eventBus'
   export default {
     props: {
         searchPath: null
@@ -78,7 +79,15 @@
               "Content-Type": "application/json"
               },
               body: params
-          }).then(()=>{this.dialog = false;});
+          }).then( res =>{
+              //this.dialog = false;
+              if (res.status === 200)
+                eventBus.$emit('showSnackbar', {text: 'Your Report is in wait list', type: 'success'})
+              else
+                eventBus.$emit('showSnackbar', {text: 'Error while sending the report', type: 'error'})
+            });
+            this.dialog = false;
+            eventBus.$emit('showSnackbar', {text: 'Your Request has been sent', type: 'success'})
         }
       }
     }

@@ -25,7 +25,6 @@
           <v-treeview
     :items="items"
     :active.sync="active"
-    :load-children="getTreeFolders"
     :open.sync="open"
     activatable
     return-object

@@ -61,9 +61,9 @@ import eventBus from '../../eventBus'
           }).then(res => {
               if (res.status === 200) {
                 this.dialog = false
-                eventBus.$emit('showSnackbar', 'success')
+                eventBus.$emit('showSnackbar', {text: 'The Reoport has been deleted', type: 'success'})
               } else {
-                eventBus.$emit('showSnackbar', 'error')
+                eventBus.$emit('showSnackbar', {text: 'Error while deleting the report', type: 'error'})
               }
           });
         }
