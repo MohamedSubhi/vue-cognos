@@ -2,7 +2,6 @@
     <v-snackbar
         v-model="snackbar"
         :color="color"
-        :multi-line="mode === 'multi-line'"
         :timeout="timeout"
         top
         >
