@@ -80,11 +80,10 @@ import eventBus from '../../eventBus'
               },
               body: params
           }).then( res =>{
-              //this.dialog = false;
               if (res.status === 200)
                 eventBus.$emit('showSnackbar', {text: 'Your Report is in wait list', type: 'success'})
               else
-                eventBus.$emit('showSnackbar', {text: 'Error while sending the report', type: 'error'})
+                res.text().then(message => eventBus.$emit('showSnackbar', {text: message, type: 'error'}))
             });
             this.dialog = false;
             eventBus.$emit('showSnackbar', {text: 'Your Request has been sent', type: 'success'})
