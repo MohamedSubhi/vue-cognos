@@ -1,7 +1,6 @@
 <template>
   <div>
     <v-btn flat icon class="card__header-btn" @click.stop="dialog = true"><v-icon color="red">delete</v-icon></v-btn>
-
     <v-dialog
       v-model="dialog"
       max-width="290"

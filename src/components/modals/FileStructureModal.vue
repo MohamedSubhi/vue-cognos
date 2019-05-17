@@ -72,7 +72,6 @@ export default {
   mounted() {
     this.getFolders();
   },
-
   methods: {
     async getFolders() {
       const folders = await fetch(
@@ -90,6 +89,6 @@ export default {
         return { name: folder.name, children: [], parent: folder.parent };
       });
     }
-    }
+  }
 };
 </script>

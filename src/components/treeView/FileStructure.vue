@@ -56,7 +56,6 @@ export default {
   mounted() {
     this.getFolders();
   },
-
   methods: {
     async getFolders() {
       const folders = await fetch(
@@ -105,12 +104,13 @@ export default {
                 file: "html",
                 searchPath: child.searchPath
               };
-            else
+            else{
               return {
                 name: child.name,
                 file: "xls",
                 searchPath: child.searchPath
               };
+            }
           }
         })
       );
