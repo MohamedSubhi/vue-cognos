@@ -16,23 +16,14 @@
     </v-toolbar>
 
     <v-content>
-      <Tree/>
+      <router-view></router-view>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import Tree from './components/treeView/Tree'
 
 export default {
-  name: 'App',
-  components: {
-    Tree
-  },
-  data () {
-    return {
-      //
-    }
-  }
+  name: 'App'
 }
 </script>
