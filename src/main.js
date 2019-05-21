@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import './plugins/vuetify'
 import App from './App.vue'
-import store from './store'
+import store from './store/Store'
 import VueRouter from 'vue-router'
 import Routes from './Routes'
 
@@ -13,7 +13,7 @@ const router = new VueRouter({
 })
 
 new Vue({
-  store,
+  store: store,
   render: h => h(App),
   router: router
 }).$mount('#app')

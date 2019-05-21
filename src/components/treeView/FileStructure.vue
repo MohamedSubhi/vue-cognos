@@ -30,10 +30,14 @@ export default {
       txt: "mdi-file-document-outline",
       xls: "mdi-file-excel"
     },
-    tree: [],
-    items: [],
+    //items: [],
     selected: null
   }),
+  computed: {
+    items() {
+      return this.$store.state.folders
+    }
+  },
   watch: {
     active() {
       if (this.active.length)
@@ -54,25 +58,26 @@ export default {
     }
   },
   mounted() {
-    this.getFolders();
+    //this.getFolders();
+    this.$store.dispatch("getFolders")
   },
   methods: {
-    async getFolders() {
-      const folders = await fetch(
-        "http://localhost:56665/api/content/getFolderList",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({ searchPath: "/content/*" })
-        }
-      );
-      const json = await folders.json();
-      this.items = json.map(folder => {
-        return { name: folder.name, children: [], parent: folder.parent };
-      });
-    },
+    // async getFolders() {
+    //   const folders = await fetch(
+    //     "http://localhost:56665/api/content/getFolderList",
+    //     {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json"
+    //       },
+    //       body: JSON.stringify({ searchPath: "/content/*" })
+    //     }
+    //   );
+    //   const json = await folders.json();
+    //   this.items = json.map(folder => {
+    //     return { name: folder.name, children: [], parent: folder.parent };
+    //   });
+    // },
     async getTreeFolders(item) {
       let searchPath = item.parent + "/folder[@name='" + item.name + "']";
 

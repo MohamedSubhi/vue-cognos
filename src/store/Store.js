@@ -1,0 +1,37 @@
+import Vue from 'vue'
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
+
+export default new Vuex.Store({
+  state: {
+    folders: []
+  },
+  mutations: {
+    getFolders: (state, folders) => {
+      state.folders = folders
+    }
+  },
+  actions: {
+    getFolders: async (context) => {
+      const folders = await fetch(
+        "http://localhost:56665/api/content/getFolderList",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ searchPath: "/content/*" })
+        }
+      ).then(folders => {
+        return folders.json()
+      }).then(json => {
+        return json.map(folder => {
+          return { name: folder.name, children: [], parent: folder.parent };
+        })
+      })
+      
+      context.commit('getFolders', folders)
+    }
+  }
+})
