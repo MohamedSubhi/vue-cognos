@@ -49,7 +49,7 @@ import eventBus from '../../eventBus'
     },
     methods: {
         deleteReport(){
-          fetch("http://localhost:56665/api/Login/deleteReport", {
+          fetch("http://localhost:56665/api/report/deleteReport", {
               method: "DELETE",
               headers: {
               "Content-Type": "application/json"

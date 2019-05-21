@@ -73,7 +73,7 @@ import eventBus from '../../eventBus'
             doc_type: this.radioGroup
           });
 
-          fetch('http://localhost:56665/api/RunAndEmail/sendReportNoPrams', {
+          fetch('http://localhost:56665/api/report/sendReportNoPrams', {
               method: 'POST',
               headers: {
               "Content-Type": "application/json"

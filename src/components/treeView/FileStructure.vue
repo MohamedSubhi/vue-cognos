@@ -37,7 +37,7 @@ export default {
   watch: {
     active() {
       if (this.active.length)
-        fetch("http://localhost:56665/api/Login/getFolderList", {
+        fetch("http://localhost:56665/api/content/getFolderList", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -59,7 +59,7 @@ export default {
   methods: {
     async getFolders() {
       const folders = await fetch(
-        "http://localhost:56665/api/Login/getFolderList",
+        "http://localhost:56665/api/content/getFolderList",
         {
           method: "POST",
           headers: {
@@ -77,7 +77,7 @@ export default {
       let searchPath = item.parent + "/folder[@name='" + item.name + "']";
 
       const folders = await fetch(
-        "http://localhost:56665/api/Login/getFolderList",
+        "http://localhost:56665/api/content/getFolderList",
         {
           method: "POST",
           headers: {

@@ -75,7 +75,7 @@ export default {
   methods: {
     async getFolders() {
       const folders = await fetch(
-        "http://localhost:56665/api/Login/getFolderList",
+        "http://localhost:56665/api/content/getFolderList",
         {
           method: "POST",
           headers: {
