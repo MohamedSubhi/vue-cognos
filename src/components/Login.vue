@@ -8,7 +8,7 @@
               <v-toolbar-title>Login form</v-toolbar-title>
               <v-spacer></v-spacer>
               <v-tooltip bottom>
-                <v-btn icon large :href="source" target="_blank" slot="activator">
+                <v-btn icon large target="_blank" slot="activator">
                   <v-icon large>code</v-icon>
                 </v-btn>
                 <span>Source</span>
@@ -16,8 +16,9 @@
             </v-toolbar>
             <v-card-text>
               <v-form>
-                <v-text-field prepend-icon="person" name="login" label="Login" type="text"></v-text-field>
+                <v-text-field prepend-icon="person" name="login" label="username" type="text" v-model="username"></v-text-field>
                 <v-text-field
+                  v-model="password"
                   prepend-icon="lock"
                   name="password"
                   label="Password"
@@ -28,7 +29,7 @@
             </v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn color="primary">Login</v-btn>
+              <v-btn color="primary" @click="test()">Login</v-btn>
             </v-card-actions>
           </v-card>
         </v-flex>
@@ -38,7 +39,28 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data: () => ({
+    username: '',
+    password: ''
+  }),
+  methods:{
+    test(){
+      fetch('http://localhost:56665/api/login/login', {
+              method: 'POST',
+              headers: {
+              "Content-Type": "application/json"
+              },
+              body: JSON.stringify({ username: this.username, password: this.password }) 
+          }).then(res => {
+            return res.json()
+          }).then(res => {
+              if (res)
+                this.$router.push(this.$route.query.redirect || '/')
+          });
+    }
+  }
+};
 </script>
 
 <style>
