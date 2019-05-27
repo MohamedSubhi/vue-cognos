@@ -14,7 +14,7 @@ export default new Vuex.Store({
   },
   actions: {
     getFolders: async (context) => {
-      const folders = await fetch(
+      let folders = await fetch(
         "http://localhost:56665/api/content/getFolderList",
         {
           method: "POST",
@@ -23,12 +23,11 @@ export default new Vuex.Store({
           },
           body: JSON.stringify({ searchPath: "/content/*" })
         }
-      ).then(folders => {
-        return folders.json()
-      }).then(json => {
-        return json.map(folder => {
-          return { name: folder.name, children: [], parent: folder.parent };
-        })
+      )
+      
+      folders = await folders.json()
+      folders = folders.map(folder => {
+        return { name: folder.name, children: [], parent: folder.parent };
       })
       
       context.commit('getFolders', folders)
