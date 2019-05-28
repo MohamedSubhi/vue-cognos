@@ -56,7 +56,8 @@ export default {
             return res.json()
           }).then(res => {
               if (res)
-                this.$router.push(this.$route.query.redirect || '/')
+                // this.$router.push(this.$route.query.redirect || '/')
+                this.$router.push({name: 'home', params: {loggedIn: res}})
           });
     }
   }
