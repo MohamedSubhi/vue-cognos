@@ -7,14 +7,11 @@
     >
       <v-card>
         <v-card-title class="headline"><v-icon class="orange--text" left>warning</v-icon>Delete Seleted?</v-card-title>
-
         <v-card-text>
           Are you sure you want to delete the selected report?
         </v-card-text>
-
         <v-card-actions>
           <v-spacer></v-spacer>
-
           <v-btn
             color="green darken-1"
             flat="flat"
@@ -22,7 +19,6 @@
           >
             Cancel
           </v-btn>
-
           <v-btn
             color="red darken-1"
             flat="flat"
@@ -40,12 +36,12 @@
 import eventBus from '../../eventBus'
   export default {
     props: {
-        searchPath: null
+      searchPath: null
     },
     data () {
-    return {
-        dialog: false
-    }
+      return {
+          dialog: false
+      }
     },
     methods: {
         deleteReport(){

@@ -30,7 +30,6 @@ export default {
       txt: "mdi-file-document-outline",
       xls: "mdi-file-excel"
     },
-    //items: [],
     selected: null
   }),
   computed: {
@@ -58,26 +57,9 @@ export default {
     }
   },
   mounted() {
-    //this.getFolders();
     this.$store.dispatch("getFolders")
   },
   methods: {
-    // async getFolders() {
-    //   const folders = await fetch(
-    //     "http://localhost:56665/api/content/getFolderList",
-    //     {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json"
-    //       },
-    //       body: JSON.stringify({ searchPath: "/content/*" })
-    //     }
-    //   );
-    //   const json = await folders.json();
-    //   this.items = json.map(folder => {
-    //     return { name: folder.name, children: [], parent: folder.parent };
-    //   });
-    // },
     async getTreeFolders(item) {
       let searchPath = item.parent + "/folder[@name='" + item.name + "']";
 
